@@ -21,19 +21,21 @@ use \App\Http\Controllers\JerseyController;
 */
 
 
-Route::middleware("authentifier")->group(function () {
-    Route::get('/', function () {return view('layouts/content');})->name('welcome');
+// Route::middleware("authentifier")->group(function () {
+   
+// });
+
+ Route::get('/', function () {return view('layouts/content');})->name('welcome');
     Route::resource('jersey', JerseyController::class);
     Route::resource('brand', BrandController::class);
     Route::resource('league', LeagueController::class);
     Route::resource('club', ClubController::class);
     Route::get('/logout', [AuthController::class, 'logoutB'])->name('auth.logout');
-});
-
-Route::middleware(Guest::class)->group(function () {
-    Route::get('/login', [AuthController::class, 'loginB'])->name('auth.login');
+  Route::get('/login', [AuthController::class, 'loginB'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'signin'])->name('auth.signin');
-});
+// Route::middleware(Guest::class)->group(function () {
+  
+// });
 
 
 
